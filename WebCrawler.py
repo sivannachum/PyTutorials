@@ -30,6 +30,13 @@ def spider(maxPages):
             for h in headers:
                 print(h.string)
 
+            # Get all the links on the page
+            # Could also then crawl through those too
+            links = text.findAll('a')
+            for l in links:
+                link = l.get('href')
+                print(link)
+
         # Get all the images on the page and save them
         for pic in soup.findAll('img', {'class': 'media-hero'}):
             url = pic.get('data-src')
