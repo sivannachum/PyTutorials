@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import DownloadImage
 
 
 def spider(maxPages):
@@ -16,6 +17,7 @@ def spider(maxPages):
         plainText = sourceCode.text
         # BeautifulSoup needs data formatted in a special way to be able to sift through it easily
         soup = BeautifulSoup(plainText, features="html.parser")
+
         # Get the headings from the webpage
         for text in soup.findAll('div', {'class': 'article-media-body title-name'}):
             header = text.string
@@ -27,6 +29,12 @@ def spider(maxPages):
             headers = headers + text.findAll('h3')
             for h in headers:
                 print(h.string)
+
+        # Get all the images on the page and save them
+        for pic in soup.findAll('img', {'class': 'media-hero'}):
+            url = pic.get('data-src')
+            DownloadImage.downloadImage(url)
+
         page += 1
 
 
