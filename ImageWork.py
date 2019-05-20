@@ -1,4 +1,5 @@
 from PIL import Image
+from PIL import ImageFilter
 
 # Open an image, show its size and format
 img = Image.open("79.jpg")
@@ -57,3 +58,15 @@ flipImg = img.transpose(Image.FLIP_TOP_BOTTOM)
 spinImg = img.transpose(Image.ROTATE_90)
 # spinImg.show()
 
+# L means luminance = black and white
+blackAndWhite = img.convert('L')
+blackAndWhite.show()
+
+# Following code relies on ImageFilter
+blur = img.filter(ImageFilter.BLUR)
+blur.show()
+# Opposite of blur
+detail = img.filter(ImageFilter.DETAIL)
+detail.show()
+edges = img.filter(ImageFilter.FIND_EDGES)
+edges.show()
