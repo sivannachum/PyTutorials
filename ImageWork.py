@@ -1,3 +1,6 @@
+# Call to show are commented out in this file
+# Uncomment them to see the effects of different method calls
+
 from PIL import Image
 from PIL import ImageFilter
 
@@ -60,13 +63,13 @@ spinImg = img.transpose(Image.ROTATE_90)
 
 # L means luminance = black and white
 blackAndWhite = img.convert('L')
-blackAndWhite.show()
+# blackAndWhite.show()
 
 # Following code relies on ImageFilter
 blur = img.filter(ImageFilter.BLUR)
-blur.show()
+# blur.show()
 # Opposite of blur
 detail = img.filter(ImageFilter.DETAIL)
-detail.show()
+# detail.show()
 edges = img.filter(ImageFilter.FIND_EDGES)
-edges.show()
+# edges.show()
